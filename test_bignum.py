@@ -96,6 +96,9 @@ class BigNumTest(unittest.TestCase):
     def test_sub_carry(self):
         self.check_bignumSub(1003,5)
 
+    def test_sub_slightly_larger(self):
+        self.check_bignumSub(98,99)
+
     
     def test_div_default(self):
         self.check_bignumDiv(123,123)
@@ -104,7 +107,11 @@ class BigNumTest(unittest.TestCase):
         self.check_bignumDiv(123,12)
 
     def test_div_right(self):
-        self.check_bignumDiv(12,123)   
+        self.check_bignumDiv(12,123) 
+
+    def test_div_by_zero(self):
+        with self.assertRaises(ZeroDivisionError):
+            result = bignum.bigDivMod([1,2,3], [0])
 
 
     def test_mod_default(self):
